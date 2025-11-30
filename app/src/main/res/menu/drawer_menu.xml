@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_rooms"
+        android:title="View Rooms"/>
+    <item
+        android:id="@+id/nav_bookings"
+        android:title="View Bookings"/>
+    <item
+        android:id="@+id/nav_add_room"
+        android:title="Add Room"/>
+    <item
+        android:id="@+id/nav_add_booking"
+        android:title="Add Booking"/>
+</menu>
