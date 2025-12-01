@@ -2,9 +2,9 @@ package com.shihon.hotelmanagment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.view.Menu;
+import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         // ---------------- TOOLBAR ----------------
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar); // MUST NEED THIS
+        setSupportActionBar(toolbar);
 
         // ---------------- DRAWER ----------------
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
                 this, drawerLayout, toolbar,
                 R.string.open, R.string.close
         );
-
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -52,15 +51,60 @@ public class MainActivity extends AppCompatActivity {
         btnAddRoom = findViewById(R.id.btnAddRoom);
         btnAddBooking = findViewById(R.id.btnAddBooking);
 
-        // Fix — XML এ IDs ঠিক আছে তাই এখানে আর Crash হবে না
+        // ---------------- Role-based visibility ----------------
+        String role = getIntent().getStringExtra("userRole"); // LoginActivity থেকে পাঠানো role
+
+        if (role != null) {
+            role = role.toLowerCase();
+            Menu menu = navigationView.getMenu();
+
+            switch (role) {
+                case "admin":
+                    btnRooms.setVisibility(View.VISIBLE);
+                    btnBookings.setVisibility(View.VISIBLE);
+                    btnAddRoom.setVisibility(View.VISIBLE);
+                    btnAddBooking.setVisibility(View.VISIBLE);
+
+                    menu.findItem(R.id.nav_rooms).setVisible(true);
+                    menu.findItem(R.id.nav_bookings).setVisible(true);
+                    menu.findItem(R.id.nav_add_room).setVisible(true);
+                    menu.findItem(R.id.nav_add_booking).setVisible(true);
+                    break;
+
+                case "manager":
+                    btnRooms.setVisibility(View.VISIBLE);
+                    btnBookings.setVisibility(View.VISIBLE);
+                    btnAddRoom.setVisibility(View.GONE);
+                    btnAddBooking.setVisibility(View.GONE);
+
+                    menu.findItem(R.id.nav_rooms).setVisible(true);
+                    menu.findItem(R.id.nav_bookings).setVisible(true);
+                    menu.findItem(R.id.nav_add_room).setVisible(false);
+                    menu.findItem(R.id.nav_add_booking).setVisible(false);
+                    break;
+
+                case "reception":
+                    btnRooms.setVisibility(View.VISIBLE);
+                    btnBookings.setVisibility(View.VISIBLE);
+                    btnAddRoom.setVisibility(View.GONE);
+                    btnAddBooking.setVisibility(View.VISIBLE);
+
+                    menu.findItem(R.id.nav_rooms).setVisible(true);
+                    menu.findItem(R.id.nav_bookings).setVisible(true);
+                    menu.findItem(R.id.nav_add_room).setVisible(false);
+                    menu.findItem(R.id.nav_add_booking).setVisible(true);
+                    break;
+            }
+        }
+
+        // ---------------- CardView Click Listeners ----------------
         btnRooms.setOnClickListener(v -> openActivity(RoomListActivity.class));
         btnBookings.setOnClickListener(v -> openActivity(BookingListActivity.class));
         btnAddRoom.setOnClickListener(v -> openActivity(RoomActivity.class));
         btnAddBooking.setOnClickListener(v -> openActivity(AddBookingActivity.class));
 
-        // ---------------- Drawer Menu Item Click ----------------
+        // ---------------- Drawer Menu Click Listener ----------------
         navigationView.setNavigationItemSelectedListener(item -> {
-
             int id = item.getItemId();
 
             if (id == R.id.nav_rooms) openActivity(RoomListActivity.class);
@@ -75,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void openActivity(Class<?> cls) {
         Intent intent = new Intent(MainActivity.this, cls);
+        intent.putExtra("userRole", getIntent().getStringExtra("userRole")); // role পাঠানো
         startActivity(intent);
     }
 }

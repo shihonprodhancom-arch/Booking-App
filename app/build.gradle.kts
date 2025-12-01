@@ -1,15 +1,17 @@
+import org.gradle.kotlin.dsl.implementation
+
 plugins {
     id("com.android.application")
 }
 
 android {
     namespace = "com.shihon.hotelmanagment"
-    compileSdk = 34
+    compileSdk = 36  // updated from 34 -> 36
 
     defaultConfig {
         applicationId = "com.shihon.hotelmanagment"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 36  // updated from 34 -> 36
         versionCode = 1
         versionName = "1.0"
 
@@ -43,6 +45,9 @@ dependencies {
     // Room Database (Java Compatible)
     implementation("androidx.room:room-runtime:2.6.1")
     annotationProcessor("androidx.room:room-compiler:2.6.1")
+
+    // Activity
+    implementation("androidx.activity:activity:1.11.0")  // explicitly added
 
     // Testing
     testImplementation("junit:junit:4.13.2")

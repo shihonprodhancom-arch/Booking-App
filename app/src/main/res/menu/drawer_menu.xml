@@ -1,4 +1,5 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Existing menu items -->
     <item
         android:id="@+id/nav_rooms"
         android:title="View Rooms"/>
@@ -11,4 +12,15 @@
     <item
         android:id="@+id/nav_add_booking"
         android:title="Add Booking"/>
+
+    <!-- New buttons / options -->
+    <item
+        android:id="@+id/nav_profile"
+        android:title="Profile"/>
+    <item
+        android:id="@+id/nav_settings"
+        android:title="Settings"/>
+    <item
+        android:id="@+id/nav_logout"
+        android:title="Logout"/>
 </menu>
