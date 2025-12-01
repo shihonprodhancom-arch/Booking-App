@@ -1,34 +1,27 @@
+// ReceptionDashboardActivity.java
 package com.shihon.hotelmanagment.ui;
 
-import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.shihon.hotelmanagment.R;
-import com.shihon.hotelmanagment.session.SessionManager;
 
 public class ReceptionDashboardActivity extends AppCompatActivity {
 
-    SessionManager session;
+    TextView tvWelcome;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reception_dashboard);
 
-        session = new SessionManager(this);
+        tvWelcome = findViewById(R.id.tvWelcome);
 
-        TextView tv = findViewById(R.id.tvWelcome);
-        tv.setText("Welcome Reception, " + session.getUsername());
+        String username = getIntent().getStringExtra("username");
+        String role = getIntent().getStringExtra("userRole");
 
-        Button btnLogout = findViewById(R.id.btnLogout);
-        btnLogout.setOnClickListener(v -> {
-            session.logout();
-            startActivity(new Intent(ReceptionDashboardActivity.this, LoginActivity.class));
-            finish();
-        });
+        tvWelcome.setText("Welcome " + username + " (" + role + ")");
     }
 }

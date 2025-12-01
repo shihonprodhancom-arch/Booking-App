@@ -1,5 +1,6 @@
 package com.shihon.hotelmanagment;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,6 +17,7 @@ import com.shihon.hotelmanagment.ui.AddBookingActivity;
 import com.shihon.hotelmanagment.ui.BookingListActivity;
 import com.shihon.hotelmanagment.ui.RoomActivity;
 import com.shihon.hotelmanagment.ui.RoomListActivity;
+import com.shihon.hotelmanagment.ui.SettingsActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private CardView btnRooms, btnBookings, btnAddRoom, btnAddBooking;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
             else if (id == R.id.nav_bookings) openActivity(BookingListActivity.class);
             else if (id == R.id.nav_add_room) openActivity(RoomActivity.class);
             else if (id == R.id.nav_add_booking) openActivity(AddBookingActivity.class);
+            else if (id == R.id.nav_settings) openActivity(SettingsActivity.class);
 
             drawerLayout.closeDrawers();
             return true;

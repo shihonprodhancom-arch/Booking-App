@@ -1,0 +1,91 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- User Info -->
+        <TextView
+            android:id="@+id/txtUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Username:"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/txtRole"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Role:"
+            android:textSize="18sp"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Theme Switch -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Dark Mode"
+                android:textSize="18sp" />
+
+            <Switch
+                android:id="@+id/switchTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- Change Password -->
+        <LinearLayout
+            android:id="@+id/btnChangePassword"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:background="#EAEAEA"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Change Password"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <!-- Logout -->
+        <LinearLayout
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:layout_marginTop="20dp"
+            android:background="#FFCDD2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Logout"
+                android:textSize="18sp"
+                android:textColor="#B00020" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtVersion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Version"
+            android:layout_marginTop="20dp" />
+
+    </LinearLayout>
+</ScrollView>

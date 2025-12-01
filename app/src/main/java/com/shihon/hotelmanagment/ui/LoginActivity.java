@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.shihon.hotelmanagment.database.AppDatabase;
 import com.shihon.hotelmanagment.database.UserEntity;
 import com.shihon.hotelmanagment.R;
+import com.shihon.hotelmanagment.MainActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -40,17 +41,11 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            switch (user.getRole()) {
-                case "admin":
-                    startActivity(new Intent(this, AdminDashboardActivity.class));
-                    break;
-                case "manager":
-                    startActivity(new Intent(this, ManagerDashboardActivity.class));
-                    break;
-                case "reception":
-                    startActivity(new Intent(this, ReceptionDashboardActivity.class));
-                    break;
-            }
+            // ---------------- Role-based Dashboard ----------------
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            intent.putExtra("username", user.getUsername());
+            intent.putExtra("userRole", user.getRole());
+            startActivity(intent);
             finish(); // Login activity close
         });
     }

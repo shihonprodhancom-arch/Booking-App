@@ -6,8 +6,15 @@
         android:allowBackup="true"
         android:label="HotelManagment"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
-        <!-- Role-based Dashboards -->
+        <activity
+            android:name=".database.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ChangePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.SettingsActivity"
+            android:exported="false" /> <!-- Role-based Dashboards -->
         <activity
             android:name=".ui.AdminDashboardActivity"
             android:exported="false" />
@@ -16,14 +23,10 @@
             android:exported="false" />
         <activity
             android:name=".ui.ReceptionDashboardActivity"
-            android:exported="false" />
-
-        <!-- Login Activity -->
+            android:exported="false" /> <!-- Login Activity -->
         <activity
             android:name=".ui.LoginActivity"
-            android:exported="false" />
-
-        <!-- Room & Booking Activities -->
+            android:exported="false" /> <!-- Room & Booking Activities -->
         <activity
             android:name=".ui.RoomActivity"
             android:exported="false" />
@@ -35,18 +38,16 @@
             android:exported="false" />
         <activity
             android:name=".ui.AddBookingActivity"
-            android:exported="false" />
-
-        <!-- Main Launcher Activity -->
+            android:exported="false" /> <!-- Main Launcher Activity -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
